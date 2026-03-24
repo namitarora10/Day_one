@@ -91,6 +91,20 @@ async function handleCallbackSubmit(event) {
     showNotification('Sending your request...', 'warning');
     
     try {
+        // First test if API is working
+        const testUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+            ? 'http://localhost:3000/api/test'
+            : '/api/test'; // For deployed version
+            
+        console.log('Testing API at:', testUrl);
+        
+        const testResponse = await fetch(testUrl);
+        console.log('Test response status:', testResponse.status);
+        
+        if (!testResponse.ok) {
+            throw new Error(`API test failed: ${testResponse.status}`);
+        }
+        
         // Send data to backend - works with both local and deployed
         const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
             ? 'http://localhost:3000/api/callback-request'
