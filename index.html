@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day One Gym - Your Health Milestone</title>
+    <meta name="description" content="Join Day One Gym - YOUR HEALTH MILESTONE. State-of-the-art equipment, personal training, and flexible membership plans. Start your fitness journey today!">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-dumbbell"></i>
+                <span>Day One</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Your Health Milestone Starts Here</h1>
+            <p>Join Day One Gym and begin your fitness journey with state-of-the-art equipment, expert trainers, and a community that motivates you to achieve your health goals.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="scrollToSection('pricing')">View Membership Plans</button>
+                <button class="btn-secondary" onclick="scrollToSection('callback')">Request Callback</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="hero-placeholder">
+                <i class="fas fa-dumbbell"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Why Choose Day One Gym?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>State-of-the-Art Equipment</h3>
+                    <p>Latest cardio machines, free weights, and strength training equipment from top brands.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Expert Personal Trainers</h3>
+                    <p>Certified trainers to help you achieve your fitness goals with personalized workout plans.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Group Classes</h3>
+                    <p>Join energizing group fitness classes including yoga, HIIT, spinning, and more.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2>Membership Plans</h2>
+            <p>Choose the perfect plan for your fitness journey</p>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>1 Month</h3>
+                        <div class="price-container">
+                            <div class="original-price">₹1200</div>
+                            <div class="price">
+                                <span class="currency">₹</span>
+                                <span class="amount">1000</span>
+                                <span class="period">/month</span>
+                            </div>
+                            <div class="offer-badge">Save ₹200</div>
+                        </div>
+                    </div>
+                    <button class="btn-primary" onclick="selectPlan('1 Month Offer')">Grab Offer</button>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>3 Months</h3>
+                        <div class="price-container">
+                            <div class="original-price">₹3000</div>
+                            <div class="price">
+                                <span class="currency">₹</span>
+                                <span class="amount">2500</span>
+                                <span class="period">/3 months</span>
+                            </div>
+                            <div class="offer-badge">Save ₹500</div>
+                        </div>
+                    </div>
+                    <button class="btn-primary" onclick="selectPlan('3 Months Offer')">Grab Offer</button>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="pricing-header">
+                        <h3>6 Months</h3>
+                        <div class="price-container">
+                            <div class="original-price">₹5200</div>
+                            <div class="price">
+                                <span class="currency">₹</span>
+                                <span class="amount">4500</span>
+                                <span class="period">/6 months</span>
+                            </div>
+                            <div class="offer-badge">Save ₹700</div>
+                            <div class="popular-badge">Best Value</div>
+                        </div>
+                    </div>
+                    <button class="btn-primary" onclick="selectPlan('6 Months Offer')">Grab Offer</button>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="pricing-header">
+                        <h3>1 Year</h3>
+                        <div class="price-container">
+                            <div class="original-price">₹9200</div>
+                            <div class="price">
+                                <span class="currency">₹</span>
+                                <span class="amount">8000</span>
+                                <span class="period">/year</span>
+                            </div>
+                            <div class="offer-badge">Save ₹1200</div>
+                            <div class="popular-badge">Best Deal</div>
+                        </div>
+                    </div>
+                    <button class="btn-primary" onclick="selectPlan('1 Year Offer')">Grab Offer</button>
+                </div>
+            </div>
+            
+            <div class="offer-timer">
+                <div class="timer-content">
+                    <h4>🔥 Limited Time Offer</h4>
+                    <p>Special discount prices available for a limited time only!</p>
+                    <div class="timer-display">
+                        <div class="time-unit">
+                            <span id="days">00</span>
+                            <small>Days</small>
+                        </div>
+                        <div class="time-unit">
+                            <span id="hours">00</span>
+                            <small>Hours</small>
+                        </div>
+                        <div class="time-unit">
+                            <span id="minutes">00</span>
+                            <small>Minutes</small>
+                        </div>
+                        <div class="time-unit">
+                            <span id="seconds">00</span>
+                            <small>Seconds</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Callback Request Section -->
+    <section id="callback" class="callback">
+        <div class="container">
+            <div class="callback-content">
+                <div class="callback-info">
+                    <h2>Need More Information?</h2>
+                    <p>Our team is ready to help you choose the perfect membership plan and answer all your questions. Request a callback and we'll get in touch with you within 24 hours.</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 99965 63127 (Ranjot Singh)</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>1st Floor Galaxy Supermarket, near main chowk, Saha, Ambala Cantt. Pincode: 133104</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="callback-form">
+                    <form id="callbackForm" onsubmit="handleCallbackSubmit(event)">
+                        <h3>Request a Callback</h3>
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="preferredTime" name="preferredTime" required>
+                                <option value="">Preferred Callback Time</option>
+                                <option value="morning">Morning (9AM - 12PM)</option>
+                                <option value="afternoon">Afternoon (12PM - 5PM)</option>
+                                <option value="evening">Evening (5PM - 8PM)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Tell us about your fitness goals (optional)"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">Request Callback</button>
+                    </form>
+                    
+                    <!-- Form Status Notification -->
+                    <div id="formNotification" class="form-notification" style="display: none; margin-top: 20px; padding: 16px 20px; border-radius: 12px; font-weight: 600; text-align: center; transition: all 0.3s ease;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Visit Us Today</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Hours</h3>
+                    <p><strong>Monday - Saturday:</strong></p>
+                    <p>Morning: 5AM - 10AM</p>
+                    <p>Evening: 4:30PM - 9PM</p>
+                    <p><strong>Sunday:</strong> Closed</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Location</h3>
+                    <p>1st Floor Galaxy Supermarket</p>
+                    <p>Near Main Chowk, Saha</p>
+                    <p>Ambala Cantt, Pincode: 133104</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Contact</h3>
+                    <p><strong>Ranjot Singh</strong></p>
+                    <p>Phone: +91 99965 63127</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-dumbbell"></i>
+                    <span>Day One Gym</span>
+                    <p>YOUR HEALTH MILESTONE</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#pricing">Pricing</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#">Personal Training</a></li>
+                            <li><a href="#">Group Classes</a></li>
+                            <li><a href="#">Nutrition Coaching</a></li>
+                            <li><a href="#">Corporate Wellness</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Follow Us</h4>
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/gym.dayone/" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Day One Gym. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-check-circle"></i>
+                <h3>Thank You!</h3>
+            </div>
+            <div class="modal-body">
+                <p>Your callback request has been submitted successfully. We'll contact you within 24 hours.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" onclick="closeModal()">Got it!</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

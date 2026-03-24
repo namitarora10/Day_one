@@ -1,0 +1,30 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer circle border -->
+  <circle cx="100" cy="100" r="95" fill="white" stroke="#808080" stroke-width="2"/>
+  
+  <!-- Orange kettlebell -->
+  <g transform="translate(100, 80)">
+    <!-- Kettlebell body -->
+    <ellipse cx="0" cy="5" rx="25" ry="30" fill="#FF6B00"/>
+    <!-- Kettlebell handle -->
+    <path d="M -15,-15 Q -10,-25 0,-25 Q 10,-25 15,-15" fill="none" stroke="#FF6B00" stroke-width="4"/>
+    <!-- Muscular arm flexing -->
+    <g transform="translate(0, -35)">
+      <!-- Bicep -->
+      <ellipse cx="0" cy="0" rx="12" ry="20" fill="#FF6B00"/>
+      <!-- Arm details -->
+      <circle cx="-8" cy="-5" r="3" fill="#FF6B00"/>
+      <circle cx="8" cy="-5" r="3" fill="#FF6B00"/>
+    </g>
+  </g>
+  
+  <!-- DAY ONE text -->
+  <text x="100" y="140" font-family="Arial Black, sans-serif" font-size="24" font-weight="900" text-anchor="middle" fill="#FF6B00" stroke="white" stroke-width="1">DAY ONE</text>
+  
+  <!-- Orange lines -->
+  <line x1="40" y1="155" x2="65" y2="155" stroke="#FF6B00" stroke-width="2"/>
+  <line x1="135" y1="155" x2="160" y2="155" stroke="#FF6B00" stroke-width="2"/>
+  
+  <!-- YOUR HEALTH MILESTONE text -->
+  <text x="100" y="170" font-family="Arial, sans-serif" font-size="10" font-weight="500" text-anchor="middle" fill="#333333">YOUR HEALTH MILESTONE</text>
+</svg>
