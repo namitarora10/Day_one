@@ -28,37 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Show success modal
-function showSuccessModal() {
-    const modal = document.getElementById('successModal');
-    if (modal) {
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-// Close modal
-function closeModal() {
-    const modal = document.getElementById('successModal');
-    if (modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-}
-
-// Handle plan selection
-function selectPlan(planName) {
-    // Scroll to callback form
-    scrollToSection('callback');
-    
-    // Pre-fill the form with the selected plan
-    const messageField = document.getElementById('message');
-    if (messageField) {
-        messageField.value = `I'm interested in the ${planName} membership plan. Please provide more details.`;
-        messageField.focus();
-    }
-}
-
 // Add scroll effect to navbar
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
