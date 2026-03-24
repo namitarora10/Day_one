@@ -1,4 +1,4 @@
-import twilio from 'twilio';
+const twilio = require('twilio');
 
 // Initialize Twilio client
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
@@ -8,7 +8,7 @@ const ownerPhoneNumber = process.env.OWNER_PHONE_NUMBER;
 
 const client = twilio(accountSid, authToken);
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Enable CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
