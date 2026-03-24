@@ -39,7 +39,7 @@
             <p>Join Day One Gym and begin your fitness journey with state-of-the-art equipment, expert trainers, and a community that motivates you to achieve your health goals.</p>
             <div class="hero-buttons">
                 <button class="btn-primary" onclick="scrollToSection('pricing')">View Membership Plans</button>
-                <button class="btn-secondary" onclick="scrollToSection('callback')">Request Callback</button>
+                <button class="btn-secondary" onclick="scrollToSection('contact')">Contact Us</button>
             </div>
         </div>
         <div class="hero-image">
@@ -177,62 +177,19 @@
         </div>
     </section>
 
-    <!-- Callback Request Section -->
-    <section id="callback" class="callback">
-        <div class="container">
-            <div class="callback-content">
-                <div class="callback-info">
-                    <h2>Need More Information?</h2>
-                    <p>Our team is ready to help you choose the perfect membership plan and answer all your questions. Request a callback and we'll get in touch with you within 24 hours.</p>
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <span>+91 99965 63127 (Ranjot Singh)</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>1st Floor Galaxy Supermarket, near main chowk, Saha, Ambala Cantt. Pincode: 133104</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="callback-form">
-                    <form id="callbackForm" onsubmit="handleCallbackSubmit(event)">
-                        <h3>Request a Callback</h3>
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <select id="preferredTime" name="preferredTime" required>
-                                <option value="">Preferred Callback Time</option>
-                                <option value="morning">Morning (9AM - 12PM)</option>
-                                <option value="afternoon">Afternoon (12PM - 5PM)</option>
-                                <option value="evening">Evening (5PM - 8PM)</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Tell us about your fitness goals (optional)"></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary">Request Callback</button>
-                    </form>
-                    
-                    <!-- Form Status Notification -->
-                    <div id="formNotification" class="form-notification" style="display: none; margin-top: 20px; padding: 16px 20px; border-radius: 12px; font-weight: 600; text-align: center; transition: all 0.3s ease;"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <h2>Visit Us Today</h2>
             <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Call Us</h3>
+                    <p><strong>Ranjot Singh</strong></p>
+                    <p>Phone: +91 99965 63127</p>
+                </div>
                 <div class="contact-card">
                     <div class="contact-icon">
                         <i class="fas fa-clock"></i>
@@ -251,14 +208,6 @@
                     <p>1st Floor Galaxy Supermarket</p>
                     <p>Near Main Chowk, Saha</p>
                     <p>Ambala Cantt, Pincode: 133104</p>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <h3>Contact</h3>
-                    <p><strong>Ranjot Singh</strong></p>
-                    <p>Phone: +91 99965 63127</p>
                 </div>
             </div>
         </div>
@@ -308,22 +257,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Success Modal -->
-    <div id="successModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <i class="fas fa-check-circle"></i>
-                <h3>Thank You!</h3>
-            </div>
-            <div class="modal-body">
-                <p>Your callback request has been submitted successfully. We'll contact you within 24 hours.</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-primary" onclick="closeModal()">Got it!</button>
-            </div>
-        </div>
-    </div>
 
     <script src="script.js"></script>
 </body>

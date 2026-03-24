@@ -28,168 +28,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Handle callback form submission with SMS notification
-async function handleCallbackSubmit(event) {
-    event.preventDefault();
-    
-    const form = document.getElementById('callbackForm');
-    const submitButton = form.querySelector('button[type="submit"]');
-    const notificationDiv = document.getElementById('formNotification');
-    const originalButtonText = submitButton.innerHTML;
-    
-    // Helper function to show notification
-    function showNotification(message, type) {
-        if (notificationDiv) {
-            notificationDiv.style.display = 'block';
-            notificationDiv.textContent = message;
-            
-            if (type === 'success') {
-                notificationDiv.style.background = 'linear-gradient(135deg, #d4edda, #c3e6cb)';
-                notificationDiv.style.color = '#155724';
-                notificationDiv.style.border = '1px solid #c3e6cb';
-            } else if (type === 'error') {
-                notificationDiv.style.background = 'linear-gradient(135deg, #f8d7da, #f5c6cb)';
-                notificationDiv.style.color = '#721c24';
-                notificationDiv.style.border = '1px solid #f5c6cb';
-            } else if (type === 'warning') {
-                notificationDiv.style.background = 'linear-gradient(135deg, #fff3cd, #ffeaa7)';
-                notificationDiv.style.color = '#856404';
-                notificationDiv.style.border = '1px solid #ffeaa7';
-            }
-        }
-        
-        // Also show toast
-        showToast(message, type);
-    }
-    
-    // Get form values
-    const formData = {
-        name: document.getElementById('name').value.trim(),
-        phone: document.getElementById('phone').value.trim(),
-        email: document.getElementById('email').value.trim(),
-        preferredTime: document.getElementById('preferredTime').value,
-        message: document.getElementById('message').value.trim()
-    };
-    
-    // Validate phone number (Indian format)
-    const phoneRegex = /^[6-9]\d{9}$/;
-    if (!phoneRegex.test(formData.phone.replace(/\s/g, ''))) {
-        showNotification('Please enter a valid 10-digit phone number', 'error');
-        return;
-    }
-    
-    // Validate email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-        showNotification('Please enter a valid email address', 'error');
-        return;
-    }
-    
-    // Show loading state
-    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-    submitButton.disabled = true;
-    showNotification('Sending your request...', 'warning');
-    
-    try {
-        // First test if API is working
-        const testUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
-            ? 'http://localhost:3000/api/test'
-            : '/api/test'; // For deployed version
-            
-        console.log('Testing API at:', testUrl);
-        
-        const testResponse = await fetch(testUrl);
-        console.log('Test response status:', testResponse.status);
-        
-        if (!testResponse.ok) {
-            throw new Error(`API test failed: ${testResponse.status}`);
-        }
-        
-        // Send data to backend - works with both local and deployed
-        const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
-            ? 'http://localhost:3000/api/callback-request'
-            : '/api/callback'; // For deployed version
-            
-        console.log('Sending request to:', apiUrl);
-        
-        const response = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData)
-        });
-        
-        console.log('Response received:', response.status);
-        
-        const result = await response.json();
-        
-        console.log('Result:', result);
-        
-        if (result.success) {
-            // Store in localStorage for backup
-            let callbackRequests = JSON.parse(localStorage.getItem('callbackRequests') || '[]');
-            callbackRequests.push({
-                ...formData,
-                timestamp: new Date().toISOString(),
-                gym: 'Day One Gym'
-            });
-            localStorage.setItem('callbackRequests', JSON.stringify(callbackRequests));
-            
-            // Show success notification
-            showNotification('✅ Request submitted successfully! Ranjot will contact you soon.', 'success');
-            
-            // Show success modal
-            showSuccessModal();
-            form.reset();
-            
-            console.log('Callback request submitted and SMS sent:', result);
-        } else {
-            showNotification('❌ Error: ' + (result.error || 'Failed to submit request'), 'error');
-        }
-        
-    } catch (error) {
-        console.error('Error submitting form:', error);
-        
-        // Fallback: Store locally and show success message
-        let callbackRequests = JSON.parse(localStorage.getItem('callbackRequests') || '[]');
-        callbackRequests.push({
-            ...formData,
-            timestamp: new Date().toISOString(),
-            gym: 'Day One Gym',
-            smsStatus: 'failed - stored locally'
-        });
-        localStorage.setItem('callbackRequests', JSON.stringify(callbackRequests));
-        
-        // Show warning notification
-        showNotification('⚠️ Request saved locally. SMS notification may be delayed.', 'warning');
-        
-        // Still show success modal
-        showSuccessModal();
-        form.reset();
-        
-    } finally {
-        // Reset button
-        submitButton.innerHTML = originalButtonText;
-        submitButton.disabled = false;
-    }
-}
-
 // Show success modal
 function showSuccessModal() {
     const modal = document.getElementById('successModal');
-    modal.style.display = 'flex';
-    
-    // Add animation
-    setTimeout(() => {
-        modal.querySelector('.modal-content').classList.add('animate-fade-in');
-    }, 10);
+    if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
 }
 
 // Close modal
 function closeModal() {
     const modal = document.getElementById('successModal');
-    modal.style.display = 'none';
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
 }
 
 // Handle plan selection
@@ -239,17 +93,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Add countdown timer functionality
-document.addEventListener('DOMContentLoaded', function() {
-    // Set the end date for the offer (30 days from now)
-    const endDate = new Date();
-    endDate.setDate(endDate.getDate() + 30);
+// Countdown timer for limited time offer
+function startCountdown() {
+    // Set the countdown date (7 days from now)
+    const countdownDate = new Date();
+    countdownDate.setDate(countdownDate.getDate() + 7);
     
-    function updateTimer() {
-        const now = new Date();
-        const timeLeft = endDate - now;
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = countdownDate.getTime() - now;
         
-        if (timeLeft <= 0) {
+        if (distance < 0) {
             document.getElementById('days').textContent = '00';
             document.getElementById('hours').textContent = '00';
             document.getElementById('minutes').textContent = '00';
@@ -257,10 +111,10 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
         
         document.getElementById('days').textContent = days.toString().padStart(2, '0');
         document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
@@ -268,10 +122,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
     }
     
-    // Update timer every second
-    setInterval(updateTimer, 1000);
-    updateTimer();
-});
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+}
 
 // Add hover effects to pricing cards
 document.addEventListener('DOMContentLoaded', function() {
