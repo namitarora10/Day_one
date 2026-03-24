@@ -94,7 +94,7 @@ async function handleCallbackSubmit(event) {
         // Send data to backend - works with both local and deployed
         const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
             ? 'http://localhost:3000/api/callback-request'
-            : '/api/callback-request'; // For deployed version
+            : '/api/callback'; // For deployed version
             
         console.log('Sending request to:', apiUrl);
         
