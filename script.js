@@ -28,6 +28,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Open Instagram with pre-filled message
+function openInstagram(planName) {
+    const message = encodeURIComponent(`Hi! I wanted to know about the membership at Dayone gym - ${planName} plan.`);
+    const instagramUrl = `https://www.instagram.com/direct/new/?text=${message}`;
+    window.open(instagramUrl, '_blank');
+}
+
 // Add scroll effect to navbar
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
